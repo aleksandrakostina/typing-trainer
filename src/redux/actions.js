@@ -1,0 +1,3 @@
+export const GET_TEXT_INIT = "GET_TEXT_INIT";
+export const GET_TEXT_SUCCESS = "GET_TEXT_SUCCESS";
+export const GET_TEXT_ERROR = "GET_TEXT_ERROR";
