@@ -1,0 +1,11 @@
+.input_invisible {
+  position: absolute;
+  height: 0px;
+  width: 100%;
+  font-size: 16px;
+  overflow: hidden;
+  border: none;
+  color: transparent;
+  background-color: transparent;
+  outline: 0;
+}
