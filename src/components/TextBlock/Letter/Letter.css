@@ -1,0 +1,21 @@
+.green {
+  background-color: #5bc538;
+  padding: 3px;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.black {
+  color: #000000;
+}
+
+.passed-text {
+  color: #5bc538;
+}
+
+.red {
+  background-color: #c53838;
+  padding: 3px;
+  border-radius: 3px;
+  color: #fff;
+}

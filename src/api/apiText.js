@@ -8,7 +8,6 @@ export const apiText = (url) => {
     }
   })
   .then(data => {
-    console.log(data)
     return data;
   })
 }

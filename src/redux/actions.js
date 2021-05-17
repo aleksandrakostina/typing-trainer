@@ -1,3 +1,11 @@
 export const GET_TEXT_INIT = "GET_TEXT_INIT";
 export const GET_TEXT_SUCCESS = "GET_TEXT_SUCCESS";
 export const GET_TEXT_ERROR = "GET_TEXT_ERROR";
+
+export const SET_PRESSED_VALUE = 'SET_PRESSED_VALUE';
+
+export const SET_CURRENT_LETTER = 'SET_CURRENT_LETTER';
+
+export const SET_INDEX = 'SET_INDEX';
+
+export const SET_ERROR = 'SET_ERROR';

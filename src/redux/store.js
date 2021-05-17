@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { textReducer } from './reducers/textReducer';
+import { inputReducer } from './reducers/inputReducer';
 
 const reducers = combineReducers({
-  text: textReducer
+  text: textReducer,
+  value: inputReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

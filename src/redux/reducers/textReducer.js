@@ -1,8 +1,10 @@
-import { GET_TEXT_INIT, GET_TEXT_SUCCESS, GET_TEXT_ERROR } from './../actions';
+import { GET_TEXT_INIT, GET_TEXT_SUCCESS, GET_TEXT_ERROR, SET_CURRENT_LETTER, SET_INDEX } from './../actions';
 
 const initialState = {
   text: '',
-  error: ''
+  error: '',
+  currentLetter: '',
+  idx: 0
 }
 
 export const textReducer = (state = initialState, action) => {
@@ -21,6 +23,16 @@ export const textReducer = (state = initialState, action) => {
       return {
         ...state,
         
+      }
+    case SET_CURRENT_LETTER:
+      return {
+        ...state,
+        currentLetter: action.value
+      }
+    case SET_INDEX:
+      return {
+        ...state,
+        idx: action.idx
       }
     default:
       return state;
