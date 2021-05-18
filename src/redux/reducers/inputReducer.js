@@ -1,9 +1,11 @@
-import { SET_ERROR, SET_PRESSED_VALUE } from './../actions';
+import { SET_COUNT_CORRECT, SET_COUNT_TYPOS, SET_ERROR, SET_PRESSED_VALUE } from './../actions';
 
 const initialState = {
   value: '',
   pressedLetter: '',
-  isError: false
+  isError: false,
+  countCorrect: 0,
+  countTypos: 0
 }
 
 export const inputReducer = (state = initialState, action) => {
@@ -18,6 +20,16 @@ export const inputReducer = (state = initialState, action) => {
       return {
         ...state,
         isError: action.value
+      }
+    case SET_COUNT_TYPOS:
+      return {
+        ...state,
+        countTypos: state.countTypos + 1
+      }
+    case SET_COUNT_CORRECT:
+      return {
+        ...state,
+        countCorrect: state.countCorrect + 1
       }
     default:
       return state;

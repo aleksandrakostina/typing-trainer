@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getText, setCurrentLetter } from "../../redux/actionCreators";
 import TextBlock from "./TextBlock";
 
-const TextBlockContainer = ({ getText, text, currentLetter, pressedLetter, setCurrentLetter, idx, 
+const TextBlockContainer = ({ getText, text, currentLetter, pressedLetter, setCurrentLetter, currentIndex, 
   isError }) => {
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const TextBlockContainer = ({ getText, text, currentLetter, pressedLetter, setCu
     <TextBlock text={text} 
                 currentLetter={currentLetter} 
                 pressedLetter={pressedLetter} 
-                idx={idx}
+                currentIndex={currentIndex}
                 isError={isError} />
   )
 }
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
     text: state.text.text,
     currentLetter: state.text.currentLetter,
     pressedLetter: state.value.pressedLetter,
-    idx: state.text.idx,
+    currentIndex: state.text.currentIndex,
     isError: state.value.isError
   }
 }

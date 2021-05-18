@@ -9,3 +9,6 @@ export const SET_CURRENT_LETTER = 'SET_CURRENT_LETTER';
 export const SET_INDEX = 'SET_INDEX';
 
 export const SET_ERROR = 'SET_ERROR';
+
+export const SET_COUNT_CORRECT = 'SET_COUNT_CORRECT';
+export const SET_COUNT_TYPOS = 'SET_COUNT_TYPOS';

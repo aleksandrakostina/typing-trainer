@@ -4,7 +4,7 @@ const initialState = {
   text: '',
   error: '',
   currentLetter: '',
-  idx: 0
+  currentIndex: 0
 }
 
 export const textReducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ export const textReducer = (state = initialState, action) => {
     case GET_TEXT_INIT:
       return {
         ...state,
-
+      
       }
     case GET_TEXT_SUCCESS:
       return {
@@ -32,7 +32,7 @@ export const textReducer = (state = initialState, action) => {
     case SET_INDEX:
       return {
         ...state,
-        idx: action.idx
+        currentIndex: state.currentIndex + 1
       }
     default:
       return state;

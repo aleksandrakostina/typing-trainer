@@ -1,21 +1,23 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setPressedValue, setIndex, setCurrentLetter, setError } from '../../redux/actionCreators';
+import { setPressedValue, setIndex, setCurrentLetter, setError, setCountCorrect, setCountTypos } from '../../redux/actionCreators';
 import './InputForm.css';
 
-const InputForm = ({ value, setPressedValue, text, currentLetter, setIndex, idx, 
-  setCurrentLetter, setError }) => {
+const InputForm = ({ value, setPressedValue, text, currentLetter, setIndex, currentIndex, 
+  setCurrentLetter, setError, setCountCorrect, setCountTypos }) => {
 
   useEffect(() => {
     const onKeypress = (e) => {
       setPressedValue(e.key);
       if(e.key === currentLetter && currentLetter !== undefined && currentLetter !== null) {
-        if(idx < text.length - 1) {
-          setIndex(idx + 1);
+        if(currentIndex < text.length - 1) {
+          setIndex();
           setError(false);
+          setCountCorrect();
         }
       } else {
         setError(true);
+        setCountTypos();
       }
     }
 
@@ -24,14 +26,14 @@ const InputForm = ({ value, setPressedValue, text, currentLetter, setIndex, idx,
     return () => {
       document.removeEventListener('keypress', onKeypress);
     };
-  }, [setPressedValue, currentLetter])
+  }, [setPressedValue, currentLetter, setIndex, setError, setCountTypos, text, currentIndex, setCountCorrect])
 
   useEffect(() => {
-    setCurrentLetter(text[idx]);
-  }, [idx, setCurrentLetter, text])
+    setCurrentLetter(text[currentIndex]);
+  }, [currentIndex, setCurrentLetter, text])
 
   return (  
-    <input className="input_invisible" value={value.join('')} />
+    <input className="input_invisible" value={value} />
   )
 }
 
@@ -41,7 +43,9 @@ const mapStateToProps = (state) => {
     text: state.text.text,
     currentLetter: state.text.currentLetter,
     pressedLetter: state.value.pressedLetter,
-    idx: state.text.idx
+    currentIndex: state.text.currentIndex,
+    countCorrect: state.value.countCorrect,
+    countTypos: state.value.countTypos
   }
 }
 
@@ -50,14 +54,20 @@ const mapDispatchToProps = (dispath) => {
     setPressedValue: (value) => {
       dispath(setPressedValue(value));
     },
-    setIndex: (idx) => {
-      dispath(setIndex(idx));
+    setIndex: () => {
+      dispath(setIndex());
     },
     setCurrentLetter: (val) => {
       dispath(setCurrentLetter(val));
     },
     setError: (value) => {
       dispath(setError(value));
+    },
+    setCountCorrect: () => {
+      dispath(setCountCorrect());
+    },
+    setCountTypos: () => {
+      dispath(setCountTypos());
     }
   }
 }
