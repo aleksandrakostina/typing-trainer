@@ -14,6 +14,8 @@ const InputForm = ({ value, setPressedValue, text, currentLetter, setIndex, curr
           setIndex();
           setError(false);
           setCountCorrect();
+        } else if(currentIndex === text.length) {
+          
         }
       } else {
         setError(true);
