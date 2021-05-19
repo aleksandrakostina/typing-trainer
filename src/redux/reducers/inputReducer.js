@@ -1,11 +1,11 @@
-import { SET_COUNT_CORRECT, SET_COUNT_TYPOS, SET_ERROR, SET_PRESSED_VALUE } from './../actions';
+import { GET_RESULT, PRESS_ERROR, RESET_STATE, SET_NEXT_INDEX, SET_PRESSED_VALUE } from './../actions';
 
 const initialState = {
   value: '',
   pressedLetter: '',
-  isError: false,
+  isPressError: false,
   countCorrect: 0,
-  countTypos: 0
+  isFinish: false
 }
 
 export const inputReducer = (state = initialState, action) => {
@@ -13,23 +13,28 @@ export const inputReducer = (state = initialState, action) => {
     case SET_PRESSED_VALUE:
       return {
         ...state,
-        value: [...state.value, action.value],
+        value: [...state.value, action.value].join(''),
         pressedLetter: action.value
       }
-    case SET_ERROR:
+    case RESET_STATE:
       return {
-        ...state,
-        isError: action.value
+        ...initialState
       }
-    case SET_COUNT_TYPOS:
+    case GET_RESULT:
       return {
         ...state,
-        countTypos: state.countTypos + 1
+        isFinish: true
       }
-    case SET_COUNT_CORRECT:
+    case SET_NEXT_INDEX:
       return {
         ...state,
-        countCorrect: state.countCorrect + 1
+        countCorrect: state.countCorrect + 1,
+        isPressError: false
+      }
+    case PRESS_ERROR:
+      return {
+        ...state,
+        isPressError: true
       }
     default:
       return state;

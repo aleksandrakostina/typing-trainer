@@ -1,0 +1,11 @@
+.indicators {
+  margin-top: 20px;
+}
+
+.indicators__item {
+  margin-bottom: 10px;
+}
+
+.indicators__item:last-child {
+  margin-bottom: 0;
+}

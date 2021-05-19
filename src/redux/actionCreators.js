@@ -1,16 +1,13 @@
 import { fetchGetText } from '../api/apiText';
 import { GET_TEXT_INIT, GET_TEXT_SUCCESS, GET_TEXT_ERROR, SET_PRESSED_VALUE, 
-  SET_CURRENT_LETTER, 
-  SET_INDEX,
-  SET_ERROR,
-  SET_COUNT_CORRECT,
-  SET_COUNT_TYPOS} from './actions';
+  SET_CURRENT_LETTER, RESET_STATE, OPEN_MODAL, CLOSE_MODAL, GET_RESULT, 
+  SET_NEXT_INDEX, PRESS_ERROR } from './actions';
 
 const getTextInit = () => ({ type: GET_TEXT_INIT });
 
 const getTextSuccess = (text) => ({ type: GET_TEXT_SUCCESS, text: text });
 
-const getTextError = () => ({ type: GET_TEXT_ERROR });
+const getTextError = (payload) => ({ type: GET_TEXT_ERROR, payload });
 
 export const getText = () => {
   return (dispatch) => {
@@ -29,10 +26,21 @@ export const setPressedValue = (value) => ({ type: SET_PRESSED_VALUE, value });
 
 export const setCurrentLetter = (value) => ({ type: SET_CURRENT_LETTER, value });
 
-export const setIndex = () => ({ type: SET_INDEX });
+export const openModal = () => ({ type: OPEN_MODAL });
 
-export const setError = (value) => ({ type: SET_ERROR, value });
+export const closeModal = () => ({ type: CLOSE_MODAL });
 
-export const setCountCorrect = () => ({ type: SET_COUNT_CORRECT });
+export const resetState = () => ({ type: RESET_STATE });
 
-export const setCountTypos = () => ({ type: SET_COUNT_TYPOS });
+export const restart = () => {
+  return (dispatch) => {
+    dispatch(resetState());
+    dispatch(openModal());
+  }
+}
+
+export const getResult = () => ({ type: GET_RESULT });
+
+export const setNextIndex = () => ({ type: SET_NEXT_INDEX });
+
+export const pressError = () => ({ type: PRESS_ERROR });

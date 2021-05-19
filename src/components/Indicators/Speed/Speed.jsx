@@ -1,28 +1,41 @@
 import { useEffect, useState } from "react";
 
-const Speed = ({ countCorrect }) => {
-  const [speed, setSpeed] = useState(0);
+const Speed = ({ countCorrect, isOpen, isFinish }) => {
+  const initialSpeed = 0;
+  const [speed, setSpeed] = useState(initialSpeed);
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => changeTime(), 1000);
-    return () => {
-      clearInterval(timer);
+    let timer;
+    if(!isOpen && isFinish) {
+      return () => {
+        clearInterval(timer);
+      }
+    }
+    if(!isOpen) {
+      timer = setInterval(() => changeTime(), 1000);
+      return () => {
+        clearInterval(timer);
+      }      
+    } else {
+      setSpeed(initialSpeed);
     }
   })
 
-  const changeTime = () => {
-    setTime(prev => prev + 1);
+  useEffect(() => {
     if(countCorrect) {
       setSpeed(Math.trunc(countCorrect * 60 / time));
     }
+  }, [time, countCorrect])
+
+  const changeTime = () => {
+    setTime(prev => prev + 1);
   }
 
   return (
-    <div>
-      <div>
-        <span>Скорость: </span>
-        <span>{speed} зн./мин</span></div>
+    <div className="indicators__item">
+      <span>Скорость: </span>
+      <span>{speed} зн./мин</span>
     </div>
   )
 }

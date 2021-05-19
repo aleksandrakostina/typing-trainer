@@ -6,9 +6,13 @@ export const SET_PRESSED_VALUE = 'SET_PRESSED_VALUE';
 
 export const SET_CURRENT_LETTER = 'SET_CURRENT_LETTER';
 
-export const SET_INDEX = 'SET_INDEX';
+export const RESET_STATE = 'RESET_STATE';
 
-export const SET_ERROR = 'SET_ERROR';
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
 
-export const SET_COUNT_CORRECT = 'SET_COUNT_CORRECT';
-export const SET_COUNT_TYPOS = 'SET_COUNT_TYPOS';
+export const GET_RESULT = 'GET_RESULT';
+
+export const SET_NEXT_INDEX = 'SET_NEXT_INDEX';
+
+export const PRESS_ERROR = 'PRESS_ERROR';

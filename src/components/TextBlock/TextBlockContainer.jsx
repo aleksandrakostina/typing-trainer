@@ -1,18 +1,14 @@
 import { useEffect } from "react"
 import { connect } from "react-redux";
-import { getText, setCurrentLetter } from "../../redux/actionCreators";
+import { getText } from "../../redux/actionCreators";
 import TextBlock from "./TextBlock";
 
-const TextBlockContainer = ({ getText, text, currentLetter, pressedLetter, setCurrentLetter, currentIndex, 
+const TextBlockContainer = ({ getText, text, currentLetter, pressedLetter, currentIndex,
   isError }) => {
 
   useEffect(() => {
     getText();
   }, [getText])
-
-  useEffect(() => {
-    setCurrentLetter(text.split('')[0]);
-  }, [text, setCurrentLetter])
 
   return (
     <TextBlock text={text} 
@@ -29,7 +25,7 @@ const mapStateToProps = (state) => {
     currentLetter: state.text.currentLetter,
     pressedLetter: state.value.pressedLetter,
     currentIndex: state.text.currentIndex,
-    isError: state.value.isError
+    isError: state.value.isPressError
   }
 }
 
@@ -37,9 +33,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getText: () => {
       dispatch(getText());
-    },
-    setCurrentLetter: (value) => {
-      dispatch(setCurrentLetter(value));
     }
   }
 }
