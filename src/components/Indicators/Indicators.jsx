@@ -6,7 +6,7 @@ import Restart from "./Restart/Restart";
 import "./Indicators.css";
 
 const Indicators = ({ countCorrect, text, isError, isLoading, restart, isOpen, isFinish }) => {
-
+  
   if(isLoading) {
     return null;
   }

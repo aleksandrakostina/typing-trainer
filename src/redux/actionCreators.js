@@ -34,8 +34,9 @@ export const resetState = () => ({ type: RESET_STATE });
 
 export const restart = () => {
   return (dispatch) => {
-    dispatch(resetState());
     dispatch(openModal());
+    dispatch(resetState());
+    dispatch(getText());   
   }
 }
 

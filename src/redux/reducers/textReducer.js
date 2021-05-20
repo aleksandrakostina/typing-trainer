@@ -40,10 +40,7 @@ export const textReducer = (state = initialState, action) => {
       }
     case RESET_STATE:
       return {
-        ...state,
-        error: '',
-        currentLetter: state.text.split('')[0],
-        currentIndex: 0
+        ...initialState
       }
     default:
       return state;
