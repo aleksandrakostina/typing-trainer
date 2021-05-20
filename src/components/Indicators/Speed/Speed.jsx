@@ -2,25 +2,24 @@ import { useEffect, useState } from "react";
 
 const Speed = ({ countCorrect, isOpen, isFinish }) => {
   const initialSpeed = 0;
+  const initialTime = 0;
   const [speed, setSpeed] = useState(initialSpeed);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(initialTime);
 
   useEffect(() => {
     let timer;
     if(!isOpen && isFinish) {
-      return () => {
-        clearInterval(timer);
-      }
-    }
-    if(!isOpen) {
+      clearInterval(timer);
+    } else if(!isOpen) {
       timer = setInterval(() => changeTime(), 1000);
-      return () => {
-        clearInterval(timer);
-      }      
     } else {
       setSpeed(initialSpeed);
+      setTime(initialTime);
     }
-  })
+    return () => {
+      clearInterval(timer);
+    }
+  }, [isOpen, isFinish])
 
   useEffect(() => {
     if(countCorrect) {

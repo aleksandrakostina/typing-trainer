@@ -20,7 +20,7 @@ const Accuracy = ({ length, isError, isOpen, isFinish }) => {
   return (
     <div className="indicators__item">
       <span>Точность: </span>
-      <span>{accuracy.toFixed(1)} %</span>
+      <span>{parseFloat(accuracy.toFixed(1))} %</span>
     </div>
   )
 }

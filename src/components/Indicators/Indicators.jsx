@@ -11,10 +11,20 @@ const Indicators = ({ countCorrect, text, isError, isLoading, restart, isOpen, i
     return null;
   }
 
+  const resutText = 'Ваш результат:';
+
   return (
-    <div className="indicators"> 
-      <Speed countCorrect={countCorrect} isOpen={isOpen} isFinish={isFinish} />
-      <Accuracy length={text.length} isError={isError} isOpen={isOpen} isFinish={isFinish} />
+    <div className="indicators">
+      {isFinish && 
+        <div className="indicators__text">{resutText}</div>
+      }
+      <Speed countCorrect={countCorrect} 
+              isOpen={isOpen} 
+              isFinish={isFinish} />
+      <Accuracy length={text.length} 
+                isError={isError} 
+                isOpen={isOpen} 
+                isFinish={isFinish} />
       <Restart  restart={restart} />
     </div>
   )

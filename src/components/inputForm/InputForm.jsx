@@ -7,18 +7,18 @@ const InputForm = ({ value, setPressedValue, text, currentLetter, currentIndex,
   setCurrentLetter, getResult, setNextIndex, pressError }) => {
 
   useEffect(() => {
-    const onKeypress = (e) => {
-      setPressedValue(e.key);
-      if(e.key === currentLetter && currentLetter !== undefined && currentLetter !== null) {
-        if(currentIndex < text.length) {
+    const onKeypress = (e) => {     
+      if(currentIndex < text.length) {
+        setPressedValue(e.key);
+        if(e.key === currentLetter && currentLetter !== undefined && currentLetter !== null) {        
           setNextIndex();
           if(currentIndex === text.length - 1) {
             getResult();
           }
+        } else {
+          pressError();
         }
-      } else {
-        pressError();
-      }
+      } 
     }
 
     document.addEventListener('keypress', onKeypress);
@@ -29,7 +29,9 @@ const InputForm = ({ value, setPressedValue, text, currentLetter, currentIndex,
   }, [setPressedValue, currentLetter, text, currentIndex, getResult, pressError, setNextIndex])
 
   useEffect(() => {
-    setCurrentLetter(text[currentIndex]);
+    if(currentIndex < text.length) {
+      setCurrentLetter(text[currentIndex]);
+    }
   }, [currentIndex, setCurrentLetter, text])
 
   return (
